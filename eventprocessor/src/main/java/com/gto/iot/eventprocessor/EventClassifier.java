@@ -14,7 +14,7 @@ public class EventClassifier extends AbstractClassifier{
 
 	private static final String breakDownContext = "create context breakdown partition by vin from IgnitionStream";
 
-	private static final String ignitionFailureIdentification = "context breakdown select count(ignition) from IgnitionStream.win:time(2) where speed = 0 and ignition != 0 and type = 'E' group by vin having (count(ignition) > 15)";
+	private static final String ignitionFailureIdentification = "context breakdown select * from IgnitionStream.win:time_batch(60) where speed = 0 and ignition != 0 and type = 'E' group by vin having (count(ignition) > 15)";
 	
 	private static EPRuntime epRuntime; 
 

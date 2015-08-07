@@ -11,7 +11,7 @@ public class TimeEventClassifier extends AbstractClassifier {
 
 	private static final String accidentContext = "create context accident partition by vin from SpeedStream";
 
-	private static final String brakingIdentification = "context accident select first(*), last(*) from SpeedStream.win:time(10)  group by vin having (last(speed)-first(speed)<-40)";
+	private static final String brakingIdentification = "context accident select first(*), last(*) from SpeedStream.win:time_batch(10)  group by vin having (last(speed)-first(speed)<-40)";
 	
 	// private static final String breakDownContext =
 	// "create context breakdown partition by vin from SpeedStream";
